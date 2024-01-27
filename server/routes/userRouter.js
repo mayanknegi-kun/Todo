@@ -14,7 +14,7 @@ const validateuserData = (req, res, next) => {
   }
 };
 
-router.post("/create", validateuserData, async (req, res) => {
+router.post("/signup", validateuserData, async (req, res) => {
   try {
     const { username, email, password } = req.body;
     const existingUser = await User.findOne({ email });
@@ -34,7 +34,7 @@ router.post("/create", validateuserData, async (req, res) => {
       email,
       password,
     });
-    const id = user.id;
+    const id = { id: user.id };
     const token = getSignedToken(id);
 
     res.status(200).json({
