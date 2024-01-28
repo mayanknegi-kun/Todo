@@ -14,8 +14,12 @@ app.use(
 );
 app.use(express.json());
 setupDB();
+
 app.use("/user", userRouter);
 app.use("/todos", todoRouter);
+app.get("/", (req, res) => {
+  res.json({ msg: "Hello" });
+});
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
