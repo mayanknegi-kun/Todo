@@ -48,4 +48,31 @@ router.post("/signup", validateuserData, async (req, res) => {
   }
 });
 
+router.post("/login", validateuserData, async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    const signedUser = await User.findOne({
+      username: username,
+      password: password,
+    });
+    if (!signedUser)
+      return res.status(404).json({ msg: "User does not exist" });
+
+    const userId = signedUser._id;
+    const id = { id: userId };
+    const token = getSignedToken(id);
+
+    res.status(200).json({
+      userId: userId,
+      authToken: token,
+    });
+  } catch (err) {
+    res.status(400).json({
+      err: err,
+      msg: "Your request could not be processed. Please try again.",
+    });
+  }
+});
+
 module.exports = router;

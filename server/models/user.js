@@ -6,6 +6,7 @@ const UserSchema = new Schema({
   username: String,
   password: String,
   updated: Date,
+  todoIds: [{ type: Schema.Types.ObjectId, ref: "Todo" }],
   created: {
     type: Date,
     default: Date.now,
