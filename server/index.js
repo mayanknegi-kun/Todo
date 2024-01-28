@@ -9,7 +9,11 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 setupDB();
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use("/user", userRouter);
 app.use("/todos", todoRouter);
 app.get("/", (req, res) => {
