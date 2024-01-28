@@ -7,14 +7,9 @@ const todoRouter = require("./routes/todoRouter");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(
-  cors({
-    origin: "*",
-  })
-);
 app.use(express.json());
 setupDB();
-
+app.use(cors());
 app.use("/user", userRouter);
 app.use("/todos", todoRouter);
 app.get("/", (req, res) => {
