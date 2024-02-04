@@ -1,8 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { triggerLogin, triggerSignup } from "../api/apiHandler";
+import Container from "../components/Container";
+import ContentContainer from "../components/ContentContainer";
 import { updateUserData } from "../utils/localStorage";
 import { useState } from "react";
 
 const Home = () => {
+  const navigate = useNavigate();
   const [signup, setSignup] = useState(true);
   const [inputData, setInputData] = useState({
     username: "",
@@ -33,6 +37,9 @@ const Home = () => {
         email: "",
         password: "",
       });
+      if (response?.authToken) {
+        navigate("todo");
+      }
     } catch (err) {
       console.log("error", err);
     }
@@ -56,13 +63,13 @@ const Home = () => {
               step towards a more organized and productive life. Get ready to
               unlock your full potential as we embark on this journey together.
               From setting goals to crushing them, our todo app is here to
-              support you every step of the way. Let's start building your
+              support you every step of the way. Let&#39;s start building your
               roadmap to success!
             </p>
           ) : (
             <p className="text-[#FF5631] font-light">
               Welcome back. Your todos await, ready to be organized,
-              prioritized, and conquered. Let's dive in and make today a
+              prioritized, and conquered. Let&#39;s dive in and make today a
               success.
             </p>
           )}
@@ -115,7 +122,7 @@ const Home = () => {
   };
 
   return (
-    <div className="h-screen flex justify-center align-center bg-[#CEBEA4]">
+    <Container>
       <div className="h-4/5 w-4/5 pt-20">
         <div className="flex gap-10 mb-10">
           <button
@@ -135,11 +142,9 @@ const Home = () => {
             LOGIN
           </button>
         </div>
-        <div className="flex flex-col h-full bg-[#0D0D0D]">
-          {formContent({ signup: signup })}
-        </div>
+        <ContentContainer>{formContent({ signup: signup })}</ContentContainer>
       </div>
-    </div>
+    </Container>
   );
 };
 

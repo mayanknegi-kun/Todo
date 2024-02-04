@@ -1,16 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import { getUserData } from "./utils/localStorage";
+import Todo from "./pages/Todo";
 
 function App() {
   const userData = getUserData();
+
   return (
     <Routes>
-      <Route element={<Home userData={userData} />} path="/"></Route>
-      {/* <Route element={<Signup />} path="/signup"></Route>
-      <Route element={<Login />} path="/login"></Route>
-      <Route element={<Todo />} path="/todo"></Route>
-      <Route element={<NoRoute />} path="*"></Route> */}
+      <Route path="/" element={<Home userData={userData} />} />
+      <Route path="/todo" element={<Todo />} />
     </Routes>
   );
 }
