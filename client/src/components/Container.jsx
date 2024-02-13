@@ -1,6 +1,6 @@
 const Container = (props) => {
   return (
-    <div className="h-screen flex justify-center align-center bg-[#CEBEA4]">
+    <div className="flex-1 h-screen w-screen flex justify-center items-center bg-[#fd8a8a]">
       {props?.children}
     </div>
   );

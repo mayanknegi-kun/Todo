@@ -43,8 +43,8 @@ export const Card = ({
   useOutsideClick(ref, handleClickOutside);
 
   return (
-    <div className="flex justify-between px-4 py-2 bg-[#FFFFFF] w-1/2 mt-10">
-      <div>
+    <div className="flex justify-between px-4 py-2 bg-[#A8D1D1] mt-10 rounded">
+      <div className="flex items-center gap-4">
         <input
           checked={todoData?.isCompleted}
           type="radio"

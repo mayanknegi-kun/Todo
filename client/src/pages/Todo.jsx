@@ -18,14 +18,14 @@ const Todo = () => {
 
   return (
     <Container>
-      <div className="h-4/5 w-4/5 mt-20 rounded">
-        <ContentContainer classes="items-center w-full">
-          <TodoCount />
-          <TodoInput
-            input={newTodo}
-            inputchangeHandler={handleTodoInputChange}
-            saveHandler={addTodo}
-          />
+      <ContentContainer classes={`flex flex-col items-center`}>
+        <TodoCount />
+        <TodoInput
+          input={newTodo}
+          inputchangeHandler={handleTodoInputChange}
+          saveHandler={addTodo}
+        />
+        <div className="w-1/2">
           {todos.map((todo) => (
             <Card
               key={todo._id}
@@ -35,8 +35,8 @@ const Todo = () => {
               updateTodoData={updateTodoData}
             />
           ))}
-        </ContentContainer>
-      </div>
+        </div>
+      </ContentContainer>
     </Container>
   );
 };
